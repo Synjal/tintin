@@ -14,6 +14,13 @@ class GPS {
     return "($latitude, $longitude)";
   }
 
+  Map<String, dynamic> toJSON() {
+    return {
+      'latitude': latitude,
+      'longitude': longitude,
+    };
+  }
+
   factory GPS.fromJSON(String json) {
     List<double> coordinates = json.split(',').map((coord) =>
         double.parse(coord.trim())).toList();

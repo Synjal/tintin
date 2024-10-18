@@ -25,8 +25,17 @@ class Album {
     return "Title: $title, Number: $number, Year: $year, YearInColor: $yearInColor, Image: $image, Resume: $resume, GPS: $gps, Location: $location";
   }
 
-  String toJSON() {
-    return "{ title: '$title', number: $number, year: $year, yearInColor: $yearInColor, image: '$image', resume: '$resume', gps: $gps.toJSON(), location: '$location'  }";
+  Map<String, dynamic> toJSON() {
+    return {
+      'title': title,
+      'number': number,
+      'year': year,
+      'yearInColor': yearInColor,
+      'image': image.replaceFirst('img/', ''),
+      'resume': resume,
+      'gps': gps.toJSON(),
+      'location': location,
+    };
   }
 
   factory Album.fromJSON(Map<String, dynamic> json) {

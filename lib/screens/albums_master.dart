@@ -9,13 +9,14 @@ class AlbumsMaster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey,
         appBar: AppBar(
           title: const Text("Albums"),
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.white,
           centerTitle: true,
         ),
         body: Center(
@@ -37,6 +38,7 @@ class AlbumsMaster extends StatelessWidget {
                     }
                     return ListView.builder(
                       itemCount: snapshot.data?.length,
+                      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 80),
                       itemBuilder: (context, index) {
                         final Album? album = snapshot.data?[index];
                         return Card(

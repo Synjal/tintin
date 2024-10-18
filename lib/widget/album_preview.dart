@@ -22,7 +22,7 @@ class _AlbumPreviewState extends State<AlbumPreview> {
       title: Text(widget.album!.title),
       trailing: const Icon(Icons.zoom_in),
       tileColor: context.watch<ReadingListProvider>().readingList.contains(widget.album!)
-          ? Colors.yellow : Colors.white10,
+          ? Colors.yellow : Colors.blueGrey,
       contentPadding: const EdgeInsets.all(16),
       onTap: () {
         Navigator.push(

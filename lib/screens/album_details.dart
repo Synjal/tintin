@@ -32,7 +32,7 @@ class _AlbumDetailsState extends State<AlbumDetails> {
           ),
         ),
         body: Center(
-          child: Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -44,16 +44,16 @@ class _AlbumDetailsState extends State<AlbumDetails> {
                 const SizedBox(height: 24),
                 Text(
                   widget.album!.resume,
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 14), textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
                 Text(
                   'Year: ${widget.album!.year}',
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 14),
                 ),
                 Text(
                   'Numéro : ${widget.album!.number}',
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 14),
                 ),
                 const SizedBox(height: 24),
                 Image(
@@ -79,7 +79,7 @@ class _AlbumDetailsState extends State<AlbumDetails> {
             ],
           ),
         ),
-      ),
+      )
     );
   }
 }
