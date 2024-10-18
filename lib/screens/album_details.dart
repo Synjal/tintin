@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/album.dart';
+import '../providers/reading_list_provider.dart';
 
 class AlbumDetails extends StatefulWidget {
-  const AlbumDetails({super.key, required this.album});
+  const AlbumDetails({super.key, required this.album,});
 
   final Album? album;
 
@@ -59,9 +61,24 @@ class _AlbumDetailsState extends State<AlbumDetails> {
                     height: 200,
                     width: 200),
                 const SizedBox(height: 24),
-              ]
+                Consumer<ReadingListProvider>(
+                  builder: (context, provider, child) {
+                  return ElevatedButton(
+                      onPressed: () {
+                        ReadingListProvider provider = Provider.of<ReadingListProvider>(context, listen: false);
+                        provider.readingList.contains(widget.album!)
+                            ? provider.removeAlbum(widget.album!)
+                            : provider.addAlbum(widget.album!);
+                        },
+                      child: Provider.of<ReadingListProvider>(context, listen: false).readingList.contains(widget.album!)
+                          ? const Icon(Icons.remove_circle_outline)
+                          : const Icon(Icons.add_circle_outline)
+                  );
+                }
+              )
+            ],
           ),
-        )
+        ),
       ),
     );
   }

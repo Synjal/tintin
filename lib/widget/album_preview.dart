@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tintin/providers/reading_list_provider.dart';
 
 import '../models/album.dart';
 import '../screens/album_details.dart';
 
 class AlbumPreview extends StatefulWidget {
-  const AlbumPreview({super.key, required this.album});
+  const AlbumPreview({super.key, required this.album,});
 
   final Album? album;
 
@@ -19,13 +21,14 @@ class _AlbumPreviewState extends State<AlbumPreview> {
       leading: Image(image: AssetImage(widget.album!.image)),
       title: Text(widget.album!.title),
       trailing: const Icon(Icons.zoom_in),
-      tileColor: Colors.white38,
+      tileColor: context.watch<ReadingListProvider>().readingList.contains(widget.album!)
+          ? Colors.yellow : Colors.white10,
       contentPadding: const EdgeInsets.all(16),
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => AlbumDetails(album: widget.album)
+            builder: (context) => AlbumDetails(album: widget.album,)
           ));
       }
     );
